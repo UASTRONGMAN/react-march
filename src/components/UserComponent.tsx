@@ -1,6 +1,5 @@
 import React, {FC} from 'react';
 import {IUserModel} from "../models/IUserModel";
-import {services} from "../services/api.services";
 
 interface IProps {
     user: IUserModel

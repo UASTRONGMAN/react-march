@@ -15,7 +15,7 @@ const UsersComponent = () => {
     }, []);
 
     const getAllPosts = (id: number) => {
-        services.getAllPostsOfUser(id).then(value => setPosts(posts))
+        services.getAllPostsOfUser(id).then(value => setPosts(value))
     }
 
     return (
