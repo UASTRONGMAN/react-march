@@ -8,10 +8,10 @@ const AxiosInstance = axios.create({
 })
 
 const services = {
-    getAllUsers: async ():Promise<AxiosResponse<IUserModel[]>> => {
+    getAllUsers: async ():Promise<IUserModel[]> => {
         return await AxiosInstance.get('/users').then(value => value.data)
     },
-    getAllPostsOfUser: async (id: number): Promise<AxiosResponse<IPostModel[]>> => {
+    getAllPostsOfUser: async (id: number): Promise<IPostModel[]> => {
         return await AxiosInstance.get(`/users/${id}/posts`).then(value => value.data)
     }
 }
