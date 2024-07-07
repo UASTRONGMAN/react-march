@@ -6,7 +6,7 @@ const AxiosInstance = axios.create({
 
 const services = {
     users: () => {
-        return AxiosInstance.get('/users')
+        return AxiosInstance.get('/users').then(data => data)
     },
     posts: () => {
         return AxiosInstance.get('/posts')
