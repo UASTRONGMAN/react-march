@@ -2,19 +2,16 @@ import React, {useState} from 'react';
 import {useForm} from "react-hook-form";
 import {postService} from "../services/services";
 import {IFormModel} from "../models/IFormModel";
-
-// export interface IFormProps{
-//     title: string,
-//     body: string,
-//     userId: number
-// }
+import {joiResolver} from "@hookform/resolvers/joi";
+import {joiValidator} from "../validators/joi.Validator";
 
 const FormComponent = () => {
 
 
-    const {handleSubmit, register} = useForm<IFormModel>();
+    const {handleSubmit, register, formState:{errors}} = useForm<IFormModel>({mode:'all', resolver: joiResolver(joiValidator)});
 
     const [post, setPost] = useState<IFormModel | null>(null)
+
 
     const submit = ({title, body, userId}: IFormModel) => {
         postService({body, userId, title}).then(value => setPost(value.data))
@@ -23,11 +20,14 @@ const FormComponent = () => {
     return (
         <div>
             <form onSubmit={handleSubmit(submit)}>
-                <input type="text" {...register('title')}/>
+                <input type="text" {...register('title')} placeholder={'title'}/>
+                {errors.title && <div>{errors.title.message}</div>}
                 <br/>
-                <input type="text" {...register('body')}/>
+                <input type="text" {...register('body')} placeholder={'body'}/>
+                {errors.body && <div>{errors.body.message}</div>}
                 <br/>
-                <input type="number" {...register('userId')}/>
+                <input type="number" {...register('userId')} placeholder={'user Id'}/>
+                {errors.userId && <div>{errors.userId.message}</div>}
                 <br/>
                 <button>Submit</button>
             </form>
