@@ -2,7 +2,8 @@ import React, {Component} from 'react';
 import {IUserModel} from "../models/IUserModel";
 
 interface IProps{
-    user: IUserModel
+    user: IUserModel,
+    getPosts: (id: number) => void
 }
 
 class UserComponent extends Component<IProps, {}> {
@@ -11,7 +12,7 @@ class UserComponent extends Component<IProps, {}> {
             <div>
                 {this.props.user.id}. {this.props.user.firstName} {this.props.user.lastName} - {this.props.user.age}
                 <button onClick={() => {
-                    getposts()
+                    this.props.getPosts(this.props.user.id)
                 }}>Get all posts of user</button>
             </div>
         );

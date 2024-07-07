@@ -7,7 +7,11 @@ type MyState = {
     users: IUserModel[]
 }
 
-class UsersComponent extends Component<{}, MyState> {
+interface IProps{
+    getPosts: (id: number) => void
+}
+
+class UsersComponent extends Component<IProps, MyState> {
 
     state:MyState = {
         users: []
@@ -23,7 +27,7 @@ class UsersComponent extends Component<{}, MyState> {
         return (
             <div>
                 {
-                    this.state.users.map(user => <UserComponent key={user.id} user={user}/>)
+                    this.state.users.map(user => <UserComponent key={user.id} user={user} getPosts={this.props.getPosts}/>)
                 }
             </div>
         );

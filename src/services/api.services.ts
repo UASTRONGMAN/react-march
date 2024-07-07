@@ -9,8 +9,8 @@ const services = {
     users: async ():Promise<AxiosResponse<IUsersResponceModel>> => {
         return await AxiosInstance.get('/users')
     },
-    posts: async ():Promise<AxiosResponse<IPostsResponceModel>> => {
-        return await AxiosInstance.get('/posts')
+    posts: async (id:number):Promise<AxiosResponse<IPostsResponceModel>> => {
+        return await AxiosInstance.get(`/posts/user/${id}`)
     }
 }
 
