@@ -1,10 +1,11 @@
 import React, {Component} from 'react';
 import {services} from "../services/api.services";
 
-class UsersComponent extends Component {
+class UsersComponent extends Component<any, any> {
 
     componentDidMount() {
-        console.log(services.users());
+        console.log('awd')
+        console.log(services.users().then(value => value.users));
     }
 
     render() {

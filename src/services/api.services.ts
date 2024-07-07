@@ -1,12 +1,13 @@
 import axios from 'axios'
+import {IUserModel} from "../models/IUserModel";
 
 const AxiosInstance = axios.create({
-    baseURL: 'https://dummyjson.com/users',
+    baseURL: 'https://dummyjson.com',
 })
 
 const services = {
-    users: () => {
-        return AxiosInstance.get('/users').then(data => data)
+    users: async ():Promise<IUserModel[]> => {
+        return await AxiosInstance.get('/users').then(value => value.data)
     },
     posts: () => {
         return AxiosInstance.get('/posts')
