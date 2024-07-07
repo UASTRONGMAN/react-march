@@ -1,17 +1,30 @@
 import React, {Component} from 'react';
 import {services} from "../services/api.services";
+import {IUserModel} from "../models/IUserModel";
+import UserComponent from "./UserComponent";
 
-class UsersComponent extends Component<any, any> {
+type MyState = {
+    users: IUserModel[]
+}
+
+class UsersComponent extends Component<{}, MyState> {
+
+    state:MyState = {
+        users: []
+    }
+
 
     componentDidMount() {
-        console.log('awd')
-        console.log(services.users().then(value => value.users));
+        services.users().then(({data}) => this.setState({...this.state, users:data.users}));
     }
 
     render() {
+        // @ts-ignore
         return (
             <div>
-
+                {
+                    this.state.users.map(user => <UserComponent key={user.id} user={user}/>)
+                }
             </div>
         );
     }
