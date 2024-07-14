@@ -22,6 +22,15 @@ const services = {
     todos: async ():Promise<AxiosResponse<ITodoModel[]>> => {
         return await AxiosInstance.get('/todos')
     },
+    userPosts: async (id:number):Promise<AxiosResponse<IPostModel[]>> => {
+        return await AxiosInstance.get('/users/'+id+'/posts')
+    },
+    postComments: async (id:number):Promise<AxiosResponse<ICommentModel[]>> => {
+        return await AxiosInstance.get('/posts/'+id+'/comments')
+    },
+    userTodos: async (id:number):Promise<AxiosResponse<ITodoModel[]>> => {
+        return await AxiosInstance.get('/users/'+id+'/todos')
+    }
 }
 
 export {services}
