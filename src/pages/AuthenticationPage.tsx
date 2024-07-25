@@ -8,7 +8,7 @@ const AuthenticationPage = () => {
     const {register, handleSubmit} = useForm<IAuthenticationModel>();
     
     const authentication = (data: IAuthenticationModel) => {
-        services.authentication(data).then(value => console.log(value.status))
+        services.authentication(data)
     }
     
     return (
