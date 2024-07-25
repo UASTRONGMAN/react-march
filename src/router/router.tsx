@@ -7,6 +7,7 @@ import CommentsPage from "../pages/CommentsPage";
 import UserPostsComponent from "../components/userPosts/UserPostsComponent";
 import PostCommentsComponent from "../components/postComments/PostCommentsComponent";
 import UserTodosComponent from "../components/userTodos/UserTodosComponent";
+import DummyJSONUsersComponent from "../unused/DummyJSONUsersComponent";
 
 const router = createBrowserRouter([
     {path: '/', element: <MainLayout/>, children: [
@@ -19,7 +20,10 @@ const router = createBrowserRouter([
                 ]},
             {path: 'posts', element: <PostsPage/>},
             {path: 'comments', element: <CommentsPage/>},
-            {path: 'todos', element: <TodosPage/>}
+            {path: 'todos', element: <TodosPage/>},
+            {path: 'DummyJSON', element: <DummyJSONUsersComponent/>, children:[
+                    {path: ':id', element: <h1>123</h1>}
+                ]}
         ]},
 
 ])

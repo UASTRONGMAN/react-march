@@ -3,6 +3,7 @@ import {IUserModel} from "../models/IUserModel";
 import {IPostModel} from "../models/IPostModel";
 import {ICommentModel} from "../models/ICommentModel";
 import {ITodoModel} from "../models/ITodoModel";
+import {IResModel} from "../unused/IResModel";
 
 const AxiosInstance = axios.create({
     baseURL: 'https://jsonplaceholder.typicode.com/',
@@ -33,4 +34,21 @@ const services = {
     }
 }
 
-export {services}
+
+const Axiosdummy = axios.create({
+    baseURL: 'https://dummyjson.com',
+    headers: {}
+})
+
+const getAll = (): Promise<AxiosResponse<IResModel>> => {
+    return Axiosdummy.get('/users')
+}
+const getAllPagin = (skip: number): Promise<AxiosResponse<IResModel>> => {
+    return Axiosdummy.get('/users?skip=' + skip)
+}
+
+export {
+    services,
+    getAll,
+    getAllPagin
+}
