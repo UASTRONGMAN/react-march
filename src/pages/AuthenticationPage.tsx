@@ -13,6 +13,7 @@ const AuthenticationPage = () => {
     
     return (
         <div>
+            <h3>Authentification form</h3>
             <form onSubmit={handleSubmit(authentication)}>
                 <input type="text" {...register('username')} placeholder={'username'}/>
                 <input type="text" {...register('password')} placeholder={'password'}/>
